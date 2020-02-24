@@ -1,10 +1,10 @@
 # Fridge API
 
 A RESTful API microservice to facilitate 
-What's in the fridge?
-Story: I want to add, update, view, delete, or change what's in the fridge
-Constraint: implement a guardrail to prevent more than 12 cans of soda in the fridge at any time
-Constraint: there are multiple refrigerators
+* What's in the fridge?
+* Story: I want to add, update, view, delete, or change what's in the fridge
+* Constraint: implement a guardrail to prevent more than 12 cans of soda in the fridge at any time
+* Constraint: there are multiple refrigerators
 
 ### Tech
 
