@@ -1,7 +1,5 @@
 # Fridge API
 
-![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)
-
 A RESTful API microservice to facilitate 
 What's in the fridge?
 Story: I want to add, update, view, delete, or change what's in the fridge
