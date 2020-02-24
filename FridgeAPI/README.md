@@ -24,13 +24,13 @@ $ java -jar FridgeAPI-1.0-SNAPSHOT.jar
 
 ### APIs
 
-* GET All http://<host>:9000/fridges
-* GET Fridge http://<host>:9000/fridges/:fridgename
-* GET Item http://<host>:9000/fridges/:fridgename/:itemname
-* PUT Fridge http://<host>:9000/fridges/:fridgename
-* PUT Item http://<host>:9000/fridges/:fridgename/:itemname
-* DELETE Fridge http://<host>:9000/fridges/:fridgename
-* DELETE Item http://<host>:9000/fridges/:fridgename/:itemname
+* GET All http://{host}:9000/fridges
+* GET Fridge http://{host}:9000/fridges/:fridgename
+* GET Item http://{host}:9000/fridges/:fridgename/:itemname
+* PUT Fridge http://{host}:9000/fridges/:fridgename
+* PUT Item http://{host}:9000/fridges/:fridgename/:itemname
+* DELETE Fridge http://{host}:9000/fridges/:fridgename
+* DELETE Item http://{host}:9000/fridges/:fridgename/:itemname
 
 
 ### Todos
