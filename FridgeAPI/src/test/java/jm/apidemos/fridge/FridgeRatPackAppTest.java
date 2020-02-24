@@ -58,7 +58,7 @@ public class FridgeRatPackAppTest {
     //Test put fridge
     @Test
     public void whenPutFridge_thenGotOK() throws JsonProcessingException {
-        assertEquals(200,
+        assertEquals(201,
                         client
                         .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
                         .put("/fridges/fridge1").getStatusCode());
@@ -97,7 +97,7 @@ public class FridgeRatPackAppTest {
         client
                 .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
                 .put("/fridges/fridge1.1.1");
-        assertEquals(200,
+        assertEquals(204,
                         client
                         .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
                         .delete("/fridges/fridge1.1.1").getStatusCode());
@@ -140,7 +140,7 @@ public class FridgeRatPackAppTest {
 
     //Test put max number of sodas
     @Test
-    public void whenPutMaxItems_thenGotOK() throws JsonProcessingException, NoSuchElementException {
+    public void whenPutMaxItems_thenGotMaxCount() throws JsonProcessingException, NoSuchElementException {
                 client
                 .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
                 .put("/fridges/fridge3");
@@ -156,16 +156,6 @@ public class FridgeRatPackAppTest {
                     .get("/fridges/fridge3").getBody().getText(), Fridge.class);
         assertEquals(12,  ret.getItem("soda").get().getCount());
     }
-
-    //Test put item into non existing fridge
-    @Test
-    public void whenItemToBadFridge_thenGot404() throws JsonProcessingException, NoSuchElementException {
-        assertEquals(404,
-                client
-                        .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
-                        .put("/fridges/fridge_bad/cheese").getStatusCode());
-    }
-
 
 
     //Test exceed max number of sodas
@@ -185,6 +175,15 @@ public class FridgeRatPackAppTest {
                     client
                     .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
                     .put("/fridges/fridge4/soda").getStatusCode());
+    }
+
+    //Test put item into non existing fridge
+    @Test
+    public void whenItemToBadFridge_thenGot404() throws JsonProcessingException, NoSuchElementException {
+        assertEquals(404,
+                client
+                        .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
+                        .put("/fridges/fridge_bad/cheese").getStatusCode());
     }
 
     //Test get non-existing item
@@ -224,7 +223,7 @@ public class FridgeRatPackAppTest {
 
     //Test delete item
     @Test
-    public void whenDeleteItem_thenGotOK() throws JsonProcessingException {
+    public void whenDeleteItem_thenGot204() throws JsonProcessingException {
 
         client
                 .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
@@ -232,7 +231,7 @@ public class FridgeRatPackAppTest {
         client
                 .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
                 .put("/fridges/fridge7/cheese");
-        assertEquals(200,
+        assertEquals(204,
                 client
                         .requestSpec(r -> r.headers(h-> h.set("Authorization","dummytoken")))
                         .delete("/fridges/fridge7/cheese").getStatusCode());
