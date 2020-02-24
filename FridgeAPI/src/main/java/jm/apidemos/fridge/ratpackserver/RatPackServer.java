@@ -162,7 +162,7 @@ public class RatPackServer extends RatpackServerCustomizerAdapter {
                                                     final String fridgeName = ctx.getPathTokens().get("fridgename");
                                                     if(fridgeDb.addFridge(fridgeName)) {
                                                         LOGGER.info("Added fridge:" + fridgeName);
-                                                        ctx.getResponse().status(200).send();
+                                                        ctx.getResponse().status(201).send();
                                                     }
                                                     else {
                                                         LOGGER.warn("Empty name or fridge already exists. Returning 409 (resource conflict)");
@@ -176,7 +176,7 @@ public class RatPackServer extends RatpackServerCustomizerAdapter {
                                                     try {
                                                         fridgeDb.removeFridge(fridgeName);
                                                         LOGGER.info("Deleted fridge:" + fridgeName);
-                                                        ctx.getResponse().status(200).send();
+                                                        ctx.getResponse().status(204).send();
                                                     }
                                                     catch(UnavailableException une){
                                                         LOGGER.warn("Empty name or fridge does not exist. Returning 404");
@@ -225,7 +225,7 @@ public class RatPackServer extends RatpackServerCustomizerAdapter {
                                                     try{
                                                         fridgeDb.addItemtoFridge(fridgeName, item);
                                                         LOGGER.info(String.format("Added item %s to fridge %s ",item, fridgeName));
-                                                        ctx.getResponse().status(200).send();
+                                                        ctx.getResponse().status(201).send();
                                                     }
                                                     catch(CountExceededException cntEx){
                                                         LOGGER.warn("Count exceeded. Returning 409");
@@ -245,7 +245,7 @@ public class RatPackServer extends RatpackServerCustomizerAdapter {
                                                     try {
                                                         fridgeDb.removeItemInFridge(fridgeName, item);
                                                         LOGGER.info(String.format("Deleted item: %s in fridge %s", item, fridgeName ));
-                                                        ctx.getResponse().status(200).send();
+                                                        ctx.getResponse().status(204).send();
                                                     }
                                                     catch(UnavailableException uex){
                                                         LOGGER.warn("Fridge or item does not exist. Returning 404");
