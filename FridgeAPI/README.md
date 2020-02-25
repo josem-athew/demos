@@ -1,3 +1,4 @@
+![Java CI](https://github.com/josem-athew/demos/workflows/Java%20CI/badge.svg?branch=master)
 # Fridge API
 
 A RESTful API microservice to facilitate 
